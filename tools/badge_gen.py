@@ -69,6 +69,25 @@ def cabinet(d, a):
 <rect x="55" y="38" width="5" height="16" rx="2.5" fill="{d}"/>
 <rect x="18" y="82" width="64" height="8" rx="3" fill="{d}" opacity=".7"/>'''
 
+def stethoscope(d, a):
+    return f'''<path d="M26 10 L26 38 Q26 56 44 56 Q62 56 62 38 L62 10" fill="none" stroke="{d}" stroke-width="9" stroke-linecap="round"/>
+<circle cx="26" cy="8" r="7" fill="{d}"/>
+<circle cx="62" cy="8" r="7" fill="{d}"/>
+<path d="M44 56 L44 72" fill="none" stroke="{d}" stroke-width="9" stroke-linecap="round"/>
+<circle cx="44" cy="84" r="15" fill="{a}"/>
+<circle cx="44" cy="84" r="7" fill="{d}" opacity=".5"/>'''
+
+def medical_cross(d, a):
+    return f'''<rect x="8" y="8" width="84" height="84" rx="20" fill="{a}"/>
+<rect x="38" y="20" width="24" height="60" rx="8" fill="{d}"/>
+<rect x="20" y="38" width="60" height="24" rx="8" fill="{d}"/>'''
+
+def clipboard_chart(d, a):
+    return f'''<rect x="18" y="12" width="64" height="80" rx="10" fill="{d}"/>
+<rect x="34" y="6" width="32" height="14" rx="6" fill="{a}"/>
+<rect x="28" y="34" width="44" height="42" rx="6" fill="#FFFFFF" opacity=".9"/>
+<polyline points="34,62 44,50 52,58 64,42" fill="none" stroke="{a}" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>'''
+
 def badge(svg, left, top, rot, z):
     return f'''<div class="badge" style="left:{left}px;top:{top}px;transform:rotate({rot}deg);z-index:{z}">
 <svg viewBox="0 0 100 100">{svg}</svg></div>'''
@@ -113,6 +132,10 @@ designs = {
         bg1="#8B5CD6", bg2="#6A3BB5", blob="rgba(255,255,255,.12)",
         icons=[roller("#3E1C78", "#F5B942"), swatches("#3E1C78", "#F5B942"), cabinet("#3E1C78", "#B794F0")],
         conf=["#FFFFFF", "#FFD27A", "#3E1C78"], seed=8),
+    "medical-seo-featured-v1": dict(
+        bg1="#17B3A3", bg2="#0E8C7F", blob="rgba(255,255,255,.14)",
+        icons=[stethoscope("#0B4F47", "#F5A524"), medical_cross("#0B4F47", "#E25C5C"), clipboard_chart("#0B4F47", "#F5A524")],
+        conf=["#FFFFFF", "#FFD27A", "#0B4F47"], seed=21),
 }
 
 with sync_playwright() as p:
