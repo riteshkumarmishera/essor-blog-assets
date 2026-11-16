@@ -104,6 +104,22 @@ def id_card(d, a):
 <rect x="54" y="38" width="30" height="7" rx="3.5" fill="{a}"/>
 <rect x="54" y="52" width="24" height="7" rx="3.5" fill="{a}"/>'''
 
+def magnifier_question(d, a):
+    return f'''<circle cx="40" cy="40" r="26" fill="none" stroke="{d}" stroke-width="10"/>
+<text x="40" y="52" font-size="34" font-weight="800" fill="{d}" text-anchor="middle" font-family="Arial">?</text>
+<rect x="58" y="58" width="14" height="32" rx="7" fill="{d}" transform="rotate(-45 65 74)"/>'''
+
+def funnel(d, a):
+    return f'''<polygon points="10,10 90,10 65,55 65,90 35,90 35,55" fill="{d}"/>
+<rect x="30" y="20" width="40" height="8" rx="4" fill="{a}"/>
+<rect x="38" y="40" width="24" height="8" rx="4" fill="{a}"/>'''
+
+def chat_bubble(d, a):
+    return f'''<path d="M10 20 Q10 10 20 10 L80 10 Q90 10 90 20 L90 58 Q90 68 80 68 L34 68 L18 86 L22 68 L20 68 Q10 68 10 58 Z" fill="{d}"/>
+<circle cx="32" cy="38" r="6" fill="{a}"/>
+<circle cx="50" cy="38" r="6" fill="{a}"/>
+<circle cx="68" cy="38" r="6" fill="{a}"/>'''
+
 def badge(svg, left, top, rot, z):
     return f'''<div class="badge" style="left:{left}px;top:{top}px;transform:rotate({rot}deg);z-index:{z}">
 <svg viewBox="0 0 100 100">{svg}</svg></div>'''
@@ -156,6 +172,10 @@ designs = {
         bg1="#4C6FFF", bg2="#3450C7", blob="rgba(255,255,255,.14)",
         icons=[map_pin("#1E2E7A", "#F5A524"), shield_check("#1E2E7A", "#38D17A"), id_card("#1E2E7A", "#F5A524")],
         conf=["#FFFFFF", "#FFD27A", "#1E2E7A"], seed=33),
+    "keyword-research-healthcare-featured-v1": dict(
+        bg1="#F2994A", bg2="#D4722A", blob="rgba(255,255,255,.14)",
+        icons=[magnifier_question("#6B3414", "#6B3414"), funnel("#6B3414", "#FFFFFF"), chat_bubble("#6B3414", "#FFFFFF")],
+        conf=["#FFFFFF", "#FFD27A", "#6B3414"], seed=47),
 }
 
 with sync_playwright() as p:
