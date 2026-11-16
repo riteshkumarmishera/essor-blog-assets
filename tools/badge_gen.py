@@ -88,6 +88,22 @@ def clipboard_chart(d, a):
 <rect x="28" y="34" width="44" height="42" rx="6" fill="#FFFFFF" opacity=".9"/>
 <polyline points="34,62 44,50 52,58 64,42" fill="none" stroke="{a}" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>'''
 
+def map_pin(d, a):
+    return f'''<path d="M50 8 C28 8 12 24 12 46 C12 68 50 92 50 92 C50 92 88 68 88 46 C88 24 72 8 50 8 Z" fill="{d}"/>
+<circle cx="50" cy="46" r="18" fill="{a}"/>
+<circle cx="50" cy="46" r="7" fill="#FFFFFF"/>'''
+
+def shield_check(d, a):
+    return f'''<path d="M50 6 L86 20 L86 48 C86 72 68 86 50 94 C32 86 14 72 14 48 L14 20 Z" fill="{d}"/>
+<path d="M33 50 L46 63 L68 36" fill="none" stroke="{a}" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>'''
+
+def id_card(d, a):
+    return f'''<rect x="8" y="22" width="84" height="58" rx="10" fill="{d}"/>
+<circle cx="32" cy="48" r="12" fill="{a}"/>
+<rect x="22" y="62" width="20" height="8" rx="4" fill="{a}"/>
+<rect x="54" y="38" width="30" height="7" rx="3.5" fill="{a}"/>
+<rect x="54" y="52" width="24" height="7" rx="3.5" fill="{a}"/>'''
+
 def badge(svg, left, top, rot, z):
     return f'''<div class="badge" style="left:{left}px;top:{top}px;transform:rotate({rot}deg);z-index:{z}">
 <svg viewBox="0 0 100 100">{svg}</svg></div>'''
@@ -136,6 +152,10 @@ designs = {
         bg1="#17B3A3", bg2="#0E8C7F", blob="rgba(255,255,255,.14)",
         icons=[stethoscope("#0B4F47", "#F5A524"), medical_cross("#0B4F47", "#E25C5C"), clipboard_chart("#0B4F47", "#F5A524")],
         conf=["#FFFFFF", "#FFD27A", "#0B4F47"], seed=21),
+    "local-seo-for-doctors-featured-v1": dict(
+        bg1="#4C6FFF", bg2="#3450C7", blob="rgba(255,255,255,.14)",
+        icons=[map_pin("#1E2E7A", "#F5A524"), shield_check("#1E2E7A", "#38D17A"), id_card("#1E2E7A", "#F5A524")],
+        conf=["#FFFFFF", "#FFD27A", "#1E2E7A"], seed=33),
 }
 
 with sync_playwright() as p:
